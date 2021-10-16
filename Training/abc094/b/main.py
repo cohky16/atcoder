@@ -1,0 +1,5 @@
+n, m, x = map(int, input().split())
+a = list(map(int, input().split()))
+b = sum(1 for i in range(x, n)  if i in a)
+c = sum(1 for i in range(0, x) if i in a)
+print(min(b, c))
