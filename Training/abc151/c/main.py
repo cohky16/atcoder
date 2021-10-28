@@ -1,7 +1,7 @@
 n,m=map(int,input().split())
 l = [0]*n
 pe = [0]*n
-r=0
+r = 0
 for _ in range(m):
     a,p = input().split()
     i = int(a) - 1
