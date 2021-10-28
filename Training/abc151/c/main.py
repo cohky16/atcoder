@@ -3,7 +3,7 @@ l = [0]*n
 pe = [0]*n
 r=0
 for _ in range(m):
-    a,p=input().split()
+    a,p = input().split()
     i = int(a) - 1
     if l[i] == 0:
         if p == "AC":
