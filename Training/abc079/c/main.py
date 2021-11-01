@@ -1,13 +1,16 @@
 s = list(map(int, list(input())))
-o = ["+", "-"]
+o = ["-", "+"]
 rr = ""
-for i in range(8):
-    t = "{:>03s}".format(bin(i)[2:])
+for i in range(1 << 3):
     r = s[0]
-    for j, c in enumerate(s[1:]):
-        if o[int(t[j])] == "+":
-            r += c
-        elif o[int(t[j])] == "-":
-            r -= c
-    if r == 7: rr = str(s[0])+o[int(t[0])]+str(s[1])+o[int(t[1])]+str(s[2])+o[int(t[2])]+str(s[3])+"=7"
+    t = ""
+    t += str(s[0])
+    for j in range(3):
+        if i&(1 << j):
+            r += s[j + 1]
+            t += ("+" + str(s[j + 1]))
+        else:
+            r -= s[j + 1]
+            t += ("-" + str(s[j + 1]))
+    if r == 7: rr = t + "=7"
 print(rr)
