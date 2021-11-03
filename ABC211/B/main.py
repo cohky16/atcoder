@@ -1,1 +1,0 @@
-print("Yes" if len(set([input(), input(), input(), input()])) == 4 else "No")
