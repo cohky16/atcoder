@@ -12,6 +12,3 @@ for ans in range(1000):
         print(ans)
         exit()
 print(-1)
-
-
-
