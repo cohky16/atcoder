@@ -1,7 +1,7 @@
 import collections
 n,k = map(int, input().split())
 c = list(map(int, input().split()))
-counter = collections.Counter(c[:k])
+counter = collections.Counter(c[:k]) # 0 ~ kまでの各要素数
 ans = len(counter)
 for i in range(k, n):
     left = c[i - k]
