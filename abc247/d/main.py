@@ -4,9 +4,18 @@ d = deque()
 for i in range(q):
     query = list(map(int, input().split()))
     if query[0] == 1:
-        d.extend([query[1]]*query[2])
+        d.append([query[1], query[2]])
     elif query[0] == 2:
-        t = 0
-        for i in range(query[1]):
-            t += d.popleft()
-        print(t)
+        c = query[1]
+        sm = 0
+        while c > 0:
+            num, cnt = d[0]
+            if c >= cnt:
+                sm += num * cnt
+                d.popleft()
+                c -= cnt   
+            else:
+                sm += num * c
+                d[0][1] -= c
+                c = 0
+        print(sm)
