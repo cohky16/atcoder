@@ -2,8 +2,12 @@
 
 set -eu
 
-contest=$1
-atcoder-tools gen $contest --workspace=/Users/kokiyasuda/program/atcoder --lang=python --without-login
-cd ./$1/A
+dir=$1
+url=$2
+path=${url##*/}
+contents=${path%_*}
+level=${path#*_}
+mkdir -p $dir/$contents/$level && cd $dir/$contents/$level
+touch main.py && oj d $url
 code .
 exec $SHELL -L 
