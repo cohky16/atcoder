@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
 # from typing import *
 
-
-
-# def solve(N: int, L: List[int], R: List[int]) -> Tuple[List[str], List[str]]:
-from bisect import bisect, bisect_left
-
-
 def solve(N, L, R):
     pass  # TODO: edit here
-    ans = {L[0], R[0]}
-    for i in range(1, N):
-        o = ans | {L[i], R[i]}
-        if ans & {L[i], R[i]}:
-            ans = {min(o),max(o)}
-        else:
-            ans = ans.union(o)
-    for iKs in sorted(ans):
+    # いもす法
+    # 必要十分な要素を確保
+    a = [0]*200010
+    # 前処理
+    # Lの場合は集合の開始、Rの場合は集合の終了
+    for i in range(N):
+        a[L[i]] += 1
+        a[R[i]] -= 1
+    # 累積和で集合の範囲を取る
+    for i in range(1, 200005):
+        a[i] += a[i-1]
+    ans = [0,0]
+    for i in range(1, 200005):
+        # 集合の開始位置
+        if a[i-1]==0 and a[i]!=0: 
+            ans[0] = i
+        # 集合の終了位置
+        if a[i-1]!=0 and a[i]==0: 
+            ans[1] = i
+            print(*ans)
+
         
 
 
